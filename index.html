@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy | Generate Plan{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">AI FITNESS PLANNER</p>
+        <h1>Build a simple 7-day routine with FitBuddy.</h1>
+        <p class="subtitle">Enter your details and Gemini will create a structured workout and nutrition/recovery tip.</p>
+    </div>
+</section>
+
+<form class="card form-grid" action="/generate-workout" method="post">
+    <div class="field">
+        <label for="username">Name</label>
+        <input id="username" name="username" required maxlength="100" placeholder="Your name">
+    </div>
+    <div class="field">
+        <label for="user_id">User ID</label>
+        <input id="user_id" name="user_id" required maxlength="50" placeholder="e.g. FB001">
+    </div>
+    <div class="field">
+        <label for="age">Age</label>
+        <input id="age" name="age" type="number" min="13" max="100" required>
+    </div>
+    <div class="field">
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" name="weight" type="number" min="1" max="500" step="0.1" required>
+    </div>
+    <div class="field">
+        <label for="goal">Fitness Goal</label>
+        <select id="goal" name="goal" required>
+            <option value="general wellness">General wellness</option>
+            <option value="weight loss">Weight loss</option>
+            <option value="muscle gain">Muscle gain</option>
+            <option value="flexibility">Flexibility</option>
+        </select>
+    </div>
+    <div class="field">
+        <label for="intensity">Workout Intensity</label>
+        <select id="intensity" name="intensity" required>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+    <div class="full">
+        <button class="btn" type="submit">Generate 7-Day Plan</button>
+    </div>
+    <p class="note full">FitBuddy provides general wellness information. Stop activity if you feel pain, dizziness or unwell and seek appropriate adult/professional guidance when needed.</p>
+</form>
+{% endblock %}
